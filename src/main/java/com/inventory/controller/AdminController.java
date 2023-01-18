@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.entity.Admin;
+import com.inventory.entity.User;
 import com.inventory.services.AdminService;
+import com.inventory.services.UserService;
 
 @RestController
 @RequestMapping("/admin")
@@ -22,6 +24,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@PostMapping("/signup")
 	public String signup(@RequestBody Admin admin) {
@@ -49,5 +54,17 @@ public class AdminController {
 		else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
+	}
+	
+	public ResponseEntity<String> addTeamMember(@RequestBody User user){
+		
+		User addeduser = userService.saveUser(user);
+		if(addeduser != null) {
+			return ResponseEntity.ok("New team member added");
+		}
+		else {
+			return ResponseEntity.ok("Error while adding member");
+		}
+		
 	}
 }
