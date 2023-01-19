@@ -49,6 +49,9 @@ public class User {
 	private Set<Supplier> supplier;
 	
 	@OneToMany(mappedBy = "user")
+	private Set<Buyer> buyer;
+	
+	@OneToMany(mappedBy = "user")
 	private Set<Product> product;
 	
 	public User() {

@@ -70,6 +70,13 @@ public class Product {
 	//@Column(name = "supplier")
 	private Set<Supplier> supplier;
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			  name = "product_has_buyer", 
+			  joinColumns = @JoinColumn(name = "product_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "buyer_id"))
+	private Set<Buyer> buyer;
+	
 	public Product() {
 		
 	}
