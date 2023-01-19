@@ -13,9 +13,14 @@ public class DepartmentServiceImpl implements DepartmentService{
 	private DepartmentRepository departmentRepository;
 	
 	@Override
-	public Department saveDepartment(Department department) {
+	public Department saveDepartment(Department department){
 		
-		return departmentRepository.save(department);
+		Department fetchedDepartment = departmentRepository.findByDepartmentName(department.getDepartmentName());
+		if(fetchedDepartment == null) {
+			return departmentRepository.save(department);
+		}
+		else
+			return fetchedDepartment;
 	}
 
 	

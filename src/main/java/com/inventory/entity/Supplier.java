@@ -28,7 +28,7 @@ public class Supplier {
 	@Column(name = "supplier_add",columnDefinition = "VARCHAR(100)",nullable = false)
 	private String supplierAdd;
 	
-	@Column(name = "email_id",columnDefinition = "VARCHAR(50)",nullable = false)
+	@Column(name = "email_id",columnDefinition = "VARCHAR(50)",nullable = false,unique = true)
 	private String emailId;
 	
 	@Column(name = "contact_number",columnDefinition = "VARCHAR(15)",nullable = false)

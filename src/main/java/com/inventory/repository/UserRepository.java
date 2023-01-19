@@ -6,4 +6,5 @@ import com.inventory.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+	public User findByEmailId(String emailId);
 }

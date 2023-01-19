@@ -38,10 +38,7 @@ public class AdminController {
 	@PostMapping("/login")
 	public ResponseEntity<Object> login(@RequestBody Map<String, String>body) {
 		
-		String email = body.get("email");
-		String password = body.get("password");
-		
-		Admin admin = adminService.getAdmin(email, password);
+		Admin admin = adminService.getAdmin(body.get("email"), body.get("password"));
 		
 		String token = "LoggedIn"; //Generate Token here
 		Map<String,Object> responseBody = new HashMap<>();
@@ -56,15 +53,13 @@ public class AdminController {
 		}
 	}
 	
+	@PostMapping("/add-member")
 	public ResponseEntity<String> addTeamMember(@RequestBody User user){
-		
-		User addeduser = userService.saveUser(user);
-		if(addeduser != null) {
-			return ResponseEntity.ok("New team member added");
-		}
-		else {
-			return ResponseEntity.ok("Error while adding member");
-		}
-		
+					
+			//Inserting user
+			String result = userService.saveUser(user);
+			return ResponseEntity.ok(result);
 	}
+	
+	
 }

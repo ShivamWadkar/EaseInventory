@@ -26,7 +26,7 @@ public class User {
 	@Column(name = "user_name",columnDefinition = "VARCHAR(100)",nullable = false)
 	private String name;
 	
-	@Column(name = "email_id",columnDefinition = "VARCHAR(100)",nullable = false)
+	@Column(name = "email_id",columnDefinition = "VARCHAR(100)",nullable = false,unique = true)
 	private String emailId;
 	
 	@Column(name = "contact_number",columnDefinition = "VARCHAR(20)",nullable = false)
@@ -101,12 +101,12 @@ public class User {
 	}
 
 	
-	public Department getDepartmen() {
+	public Department getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Department departmentNumber) {
-		this.department = departmentNumber;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	public String getRole() {
@@ -123,7 +123,7 @@ public class User {
 
 	public void setCreationDate(java.sql.Date creationDate) {
 		System.out.println(creationDate);
-		//this.creationDate = creationDate;
+		this.creationDate = creationDate;
 	}
 
 	public String getPassword() {
@@ -132,6 +132,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", contactNumber=" + contactNumber
+				+ ", department=" + department + ", role=" + role + ", creationDate=" + creationDate + ", password="
+				+ password + ", supplier=" + supplier + ", product=" + product + "]";
 	}
 
 	

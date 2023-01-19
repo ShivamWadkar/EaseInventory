@@ -19,7 +19,7 @@ public class Department {
 	@Column(name = "department_id")
 	private int departmentId;
 	
-	@Column(name="department_name",columnDefinition = "VARCHAR(100)",nullable = false)
+	@Column(name="department_name",columnDefinition = "VARCHAR(100)",nullable = false,unique = true)
 	private String departmentName;
 	
 	
@@ -51,6 +51,12 @@ public class Department {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
+
+	@Override
+	public String toString() {
+		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + ", user=" + user + "]";
+	}
+	
 	
 	
 }

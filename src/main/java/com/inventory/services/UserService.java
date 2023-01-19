@@ -4,5 +4,5 @@ import com.inventory.entity.User;
 
 public interface UserService {
 
-	public User saveUser(User user);
+	public String saveUser(User user);
 }
