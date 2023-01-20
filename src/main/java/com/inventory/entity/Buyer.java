@@ -70,11 +70,11 @@ public class Buyer {
 		this.name = name;
 	}
 
-	public String getSupplierAdd() {
+	public String getBuyerAdd() {
 		return buyerAdd;
 	}
 
-	public void setSupplierAdd(String buyerAdd) {
+	public void setBuyerAdd(String buyerAdd) {
 		this.buyerAdd = buyerAdd;
 	}
 
@@ -92,6 +92,14 @@ public class Buyer {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class SupplierController {
 	private SupplierService supplierService;
 	
 	@PostMapping("/add")
-	public ResponseEntity<String> saveSeller(@RequestBody Supplier supplier) {
+	public ResponseEntity<String> saveSupplier(@RequestBody Supplier supplier) {
 		Supplier fetchedSupplier = supplierService.saveSupplier(supplier);
 		if(fetchedSupplier != null)
 			return ResponseEntity.ok("New Supplier Added");

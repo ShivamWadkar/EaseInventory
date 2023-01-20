@@ -6,4 +6,5 @@ import com.inventory.entity.Buyer;
 
 public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
 
+	public Buyer findByEmailId(String emailId);
 }

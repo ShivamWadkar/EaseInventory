@@ -93,6 +93,20 @@ public class Supplier {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Supplier [id=" + id + ", name=" + name + ", supplierAdd=" + supplierAdd + ", emailId=" + emailId
+				+ ", contactNumber=" + contactNumber + ", user=" + user + ", product=" + product + "]";
+	}
 	
 	
 }
