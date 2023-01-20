@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.inventory.entity.Supplier;
 
-public interface SellerRepository extends JpaRepository<Supplier, Integer>{
+public interface SupplierRepository extends JpaRepository<Supplier, Integer>{
 
+	public Supplier findByEmailId(String emailId);
 }

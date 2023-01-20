@@ -1,6 +1,7 @@
 package com.inventory.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,11 @@ public class SupplierController {
 	private SupplierService supplierService;
 	
 	@PostMapping("/add")
-	public String saveSeller(@RequestBody Supplier supplier) {
-		supplierService.saveSeller(supplier);
-		return "New Seller Added";
+	public ResponseEntity<String> saveSeller(@RequestBody Supplier supplier) {
+		Supplier fetchedSupplier = supplierService.saveSupplier(supplier);
+		if(fetchedSupplier != null)
+			return ResponseEntity.ok("New Supplier Added");
+		else
+			return  ResponseEntity.ok("Supplier is already there");
 	}
 }

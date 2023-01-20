@@ -4,17 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inventory.entity.Supplier;
-import com.inventory.repository.SellerRepository;
+import com.inventory.repository.SupplierRepository;
 
 @Service
 public class SupplierServiceImpl implements SupplierService{
 
 	@Autowired
-	private SellerRepository sellerRepository;
+	private SupplierRepository supplierRepository;
 	
 	@Override
-	public Supplier saveSeller(Supplier supplier) {
-		return sellerRepository.save(supplier);
+	public Supplier saveSupplier(Supplier supplier) {
+		
+		Supplier fetchedSupplier = supplierRepository.findByEmailId(supplier.getEmailId());
+		if(fetchedSupplier == null) {
+			return supplierRepository.save(supplier);
+		}
+		else
+			return null;
+		
 	}
 
 }

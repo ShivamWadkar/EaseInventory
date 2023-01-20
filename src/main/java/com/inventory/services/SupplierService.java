@@ -4,5 +4,5 @@ import com.inventory.entity.Supplier;
 
 public interface SupplierService {
 
-	public Supplier saveSeller(Supplier supplier);
+	public Supplier saveSupplier(Supplier supplier);
 }
