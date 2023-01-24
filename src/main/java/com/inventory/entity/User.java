@@ -32,7 +32,7 @@ public class User {
 	@Column(name = "contact_number",columnDefinition = "VARCHAR(20)",nullable = false)
 	private String contactNumber;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "department_id",referencedColumnName = "department_id")
 	private Department department;
 	
@@ -140,8 +140,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", contactNumber=" + contactNumber
-				+ ", department=" + department + ", role=" + role + ", creationDate=" + creationDate + ", password="
-				+ password + ", supplier=" + supplier + ", product=" + product + "]";
+				+ ", department=" + department + ", role=" + role + ", creationDate=" + creationDate;
 	}
 
 	

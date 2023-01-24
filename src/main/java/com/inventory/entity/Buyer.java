@@ -34,7 +34,7 @@ public class Buyer {
 	@Column(name = "contact_number",columnDefinition = "VARCHAR(15)",nullable = false)
 	private String contactNumber;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id",referencedColumnName = "user_id")
 	private User user;
 	
@@ -105,7 +105,7 @@ public class Buyer {
 	@Override
 	public String toString() {
 		return "Buyer [id=" + id + ", name=" + name + ", buyerAdd=" + buyerAdd + ", emailId=" + emailId
-				+ ", contactNumber=" + contactNumber + ", user=" + user + ", product=" + product + "]";
+				+ ", contactNumber=" + contactNumber;
 	}
 	
 	

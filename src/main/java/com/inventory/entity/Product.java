@@ -56,12 +56,12 @@ public class Product {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastModifiedDate;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id",referencedColumnName = "user_id")
 	//@Column(name = "added_by")
 	private User user;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	//@JoinColumn(name = "supplier_id",referencedColumnName = "supplier_id")
 	@JoinTable(
 			  name = "product_has_supplier", 
@@ -70,7 +70,7 @@ public class Product {
 	//@Column(name = "supplier")
 	private Set<Supplier> supplier;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			  name = "product_has_buyer", 
 			  joinColumns = @JoinColumn(name = "product_id"), 

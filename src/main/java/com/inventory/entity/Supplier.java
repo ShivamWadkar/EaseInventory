@@ -34,7 +34,7 @@ public class Supplier {
 	@Column(name = "contact_number",columnDefinition = "VARCHAR(15)",nullable = false)
 	private String contactNumber;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id",referencedColumnName = "user_id")
 	private User user;
 	
@@ -102,10 +102,18 @@ public class Supplier {
 		this.user = user;
 	}
 
+	public Set<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(Set<Product> product) {
+		this.product = product;
+	}
+
 	@Override
 	public String toString() {
 		return "Supplier [id=" + id + ", name=" + name + ", supplierAdd=" + supplierAdd + ", emailId=" + emailId
-				+ ", contactNumber=" + contactNumber + ", user=" + user + ", product=" + product + "]";
+				+ ", contactNumber=" + contactNumber;
 	}
 	
 	
