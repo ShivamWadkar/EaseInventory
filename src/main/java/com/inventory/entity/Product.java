@@ -1,8 +1,10 @@
 package com.inventory.entity;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,7 +46,7 @@ public class Product {
 	@Column(name = "product_type",columnDefinition = "VARCHAR(10)",nullable = false)
 	private String type;
 	
-	@Column(name = "product_price",columnDefinition = "DECIMAL(6,3)",nullable = false)
+	@Column(name = "product_price",columnDefinition = "DECIMAL(12,4)",nullable = false)
 	private Double price;
 	
 	@Column(name = "min_stock_level",columnDefinition = "INTEGER",nullable = false)
@@ -61,7 +63,7 @@ public class Product {
 	//@Column(name = "added_by")
 	private User user;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	//@JoinColumn(name = "supplier_id",referencedColumnName = "supplier_id")
 	@JoinTable(
 			  name = "product_has_supplier", 
@@ -70,7 +72,7 @@ public class Product {
 	//@Column(name = "supplier")
 	private Set<Supplier> supplier;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinTable(
 			  name = "product_has_buyer", 
 			  joinColumns = @JoinColumn(name = "product_id"), 
@@ -184,6 +186,32 @@ public class Product {
 
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<Supplier> getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = new LinkedHashSet<Supplier>();
+		this.supplier.add(supplier);
+	}
+
+	public Set<Buyer> getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(Buyer buyer) {
+		this.buyer = new LinkedHashSet<>();
+		this.buyer.add(buyer);
 	}
 	
 	

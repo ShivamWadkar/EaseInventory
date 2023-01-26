@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inventory.dto.ProductDto;
 import com.inventory.entity.Product;
 import com.inventory.services.ProductService;
 
@@ -17,9 +18,12 @@ public class ProductController {
 	private ProductService productService;
 	
 	@PostMapping("/add")
-	public String addProduct(@RequestBody Product product) {
+	public String addProduct(@RequestBody ProductDto productDto) {
 		
-		productService.saveProduct(product);
-		return "New Product Added";
+		Product fetchedProduct = productService.saveProduct(productDto);
+		if(fetchedProduct != null)
+			return "New Product Added";
+		else
+			return "Something wrong happen";
 	}
 }

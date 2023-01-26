@@ -1,5 +1,7 @@
 package com.inventory.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,17 @@ public class BuyerServiceImpl implements BuyerService{
 			return buyerRepository.save(buyer);
 		}
 		return null;
+	}
+
+	@Override
+	public List<Buyer> getAllBuyers() {
+		
+		return buyerRepository.findAll();
+	}
+
+	@Override
+	public Buyer getBuyer(int id) {
+		return buyerRepository.findById(id).get();
 	}
 
 }

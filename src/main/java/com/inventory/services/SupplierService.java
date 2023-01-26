@@ -9,4 +9,6 @@ public interface SupplierService {
 	public Supplier saveSupplier(Supplier supplier);
 	
 	public List<Supplier> getAllSuppliers();
+	
+	public Supplier getSupplier(int id);
 }

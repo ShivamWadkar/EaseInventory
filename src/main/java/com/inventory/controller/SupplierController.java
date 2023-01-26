@@ -29,10 +29,9 @@ public class SupplierController {
 			return  ResponseEntity.ok("Supplier is already there");
 	}
 	
-	@GetMapping("/viewAll")
-	public List<Supplier> viewAllSuppliers(){
+	@GetMapping("/getAll")
+	public List<Supplier> getAllSuppliers(){
 		
 		return supplierService.getAllSuppliers();
-		//return null;
 	}
 }

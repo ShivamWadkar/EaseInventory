@@ -1,6 +1,5 @@
 package com.inventory.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +34,15 @@ public class SupplierServiceImpl implements SupplierService{
 	@Override
 	public List<Supplier> getAllSuppliers() {
 		
-		List<Supplier> suppliers = new ArrayList<>();
-		suppliers = supplierRepository.findAll();
-		System.out.println(suppliers);
-		return suppliers;
+		return supplierRepository.findAll();
+	}
+
+	@Override
+	public Supplier getSupplier(int id) {
+		Supplier fetchedSupplier = supplierRepository.findById(id).get();
+		System.out.println(fetchedSupplier);
+		return fetchedSupplier;
+				
 	}
 
 }
