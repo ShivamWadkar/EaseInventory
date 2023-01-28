@@ -16,7 +16,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	@PostMapping("/signup")
+	@PostMapping("/register")
 	public String signup(@RequestBody Admin admin) {
 		
 		adminService.saveAdmin(admin);
