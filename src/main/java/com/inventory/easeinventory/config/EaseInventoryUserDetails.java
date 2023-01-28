@@ -19,6 +19,7 @@ public class EaseInventoryUserDetails implements UserDetailsService {
     @Autowired
     private AdminRepository adminRepository;
 
+    // Authentication is provided by DAOAuthenticationProvider
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
