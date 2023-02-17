@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.inventory.easeinventory.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.inventory.easeinventory.entity.Department;
@@ -20,6 +21,8 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private DepartmentService departmentService;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public User saveUser(User user) {
@@ -27,6 +30,11 @@ public class UserServiceImpl implements UserService{
 		User fetchedUser = userRepository.findByEmailId(user.getEmailId());
 
 		if(fetchedUser == null) {
+
+			// Setting encoded password
+			String encodedPassword = passwordEncoder.encode(user.getPassword());
+			user.setPassword(encodedPassword);
+
 			// Adding current date
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = new Date();
